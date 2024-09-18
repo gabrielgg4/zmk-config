@@ -1,4 +1,4 @@
-+   # Copyright (c) 2022 The ZMK Contributors
+# Copyright (c) 2022 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 if SHIELD_LOTUS58_DONGLE
 
@@ -20,10 +20,8 @@ config ZMK_SPLIT
 
 config ZMK_BLE
 	default y
-
-if SHIELD_LOTUS58_LEFT || SHIELD_LOTUS58_RIGHT
-
-if ZMK_DISPLAY
+	
+if ZMK_DISPLAY && (SHIELD_LOTUS58_LEFT || SHIELD_LOTUS58_RIGHT)
 
 config I2C
     default y
@@ -31,13 +29,9 @@ config I2C
 config SSD1306
     default y
 
-endif # ZMK_DISPLAY IN IF  SHIELD_LOTUS58_LEFT || SHIELD_LOTUS58_RIGHT
+endif # ZMK_DISPLAY LEFT AND RIGHT
 
-endif # IF SHIELD_LOTUS58_LEFT || SHIELD_LOTUS58_RIGHT
-
-if SHIELD_LOTUS58_DONGLE
-
-if ZMK_DISPLAY
+if ZMK_DISPLAY && SHIELD_LOTUS58_RIGHT
 
 config I2C
     default y
@@ -45,9 +39,8 @@ config I2C
 config SH1106
     default y
 
-endif # ZMK_DISPLAY IN IF SHIELD_LOTUS58_DONGLE
+endif # ZMK_DISPLAY DONGLE
 
-endif # IF SHIELD_LOTUS58_DONGLE
 if LVGL
 
 config LV_Z_VDB_SIZE
